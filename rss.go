@@ -84,12 +84,12 @@ func NewRssItem(title, link, description, author, category string, pubTime time.
 	}
 }
 
-// Add an Item to the feed, under this Channel
+// AppendItem adds an Item to the feed, under this Channel
 func (ch *Channel) AppendItem(i *Item) {
 	ch.Item = append(ch.Item, i)
 }
 
-// Writes the data in RSS 2.0 format to a given file
+// WriteToFile writes the data in RSS 2.0 format to a given file
 func (rss *Rss) WriteToFile(path string) error {
 	rss.Channels[0].LastBuildDate = time.Now().Format(time.RFC822)
 	file, err := os.Create(path)
